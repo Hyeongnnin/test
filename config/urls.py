@@ -1,0 +1,18 @@
+# config/urls.py
+from django.contrib import admin
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("api/accounts/", include("accounts.urls")),
+    path("api/labor/", include("labor.urls")),
+    path("api/consultations/", include("consultations.urls")),
+    path("api/documents/", include("documents.urls")),
+    path("api/schedules/", include("schedules.urls")),
+    path("api/procedures/", include("procedures.urls")),
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
